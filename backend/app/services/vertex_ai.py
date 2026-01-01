@@ -42,3 +42,28 @@ def generate_visual_from_sheet(sheet_data: dict, sheet_type: str = "character"):
     images[0].save(location=output_filename)
     
     return output_filename
+
+if __name__ == "__main__":
+    print("Running vertex_ai.py test...")
+    
+    # Check for Project ID
+    if os.getenv("GCP_PROJECT_ID") is None and PROJECT_ID == "move-37":
+        print("WARNING: Using default Project ID 'move-37'. This may not work if you don't have access to it.")
+        print("Tip: Set the GCP_PROJECT_ID environment variable or create a .env file.")
+
+    # Test data
+    test_sheet = {
+        "name": "Test Character",
+        "description": "A futuristic robot with glowing neon blue eyes and a metallic finish.",
+        "type": "character"
+    }
+    
+    try:
+        result = generate_visual_from_sheet(test_sheet, "character")
+        print(f"Success! Image generated: {result}")
+    except Exception as e:
+        print(f"Error: {e}")
+        print("\nTroubleshooting:")
+        print(f"1. Current Project ID: {PROJECT_ID}")
+        print("2. Make sure you have run: gcloud auth application-default login")
+        print(f"3. Make sure the Vertex AI API is enabled for project '{PROJECT_ID}'")
