@@ -20,7 +20,7 @@ def generate_visual_from_sheet(sheet_data: dict, sheet_type: str = "character"):
     """
     # 1. Use Gemini to turn JSON into a professional prompt
     # This ensures the 'non-creative' user gets a 'creative' result
-    vision_model = GenerativeModel("gemini-1.5-flash")
+    vision_model = GenerativeModel("gemini-2.5-flash-image")
     prompt_generator = vision_model.generate_content(
         f"Convert this {sheet_type} JSON into a cinematic prompt for an AI image generator. "
         f"Focus on lighting, art style, and specific details: {str(sheet_data)}"
@@ -39,6 +39,7 @@ def generate_visual_from_sheet(sheet_data: dict, sheet_type: str = "character"):
 
     # 3. Save locally (for now)
     output_filename = f"{sheet_data.get('name', 'asset')}.png"
+    print(f"DEBUG: Saving image to {os.path.abspath(output_filename)}")
     images[0].save(location=output_filename)
     
     return output_filename
