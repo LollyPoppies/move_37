@@ -23,20 +23,23 @@ def generate_visual_from_sheet(sheet_data: dict, sheet_type: str = "character"):
     images = imagen_model.generate_images(
         prompt=refined_prompt,
         number_of_images=1,
-        aspect_ratio="16:9" if sheet_type == "environment" else "1:1",
+        aspect_ratio="16:9",
+        # You can't use a seed value and watermark at the same time.
         add_watermark=False,
+        # seed=100,
         safety_filter_level="block_only_high",
         person_generation="allow_all",
     )
-    print(f"DEBUG: Generated {len(images)} images.")
+    print(f"Created output image using {len(images[0]._image_bytes)} bytes")
 
     # 3. Save Image
     output_dir = os.path.join(os.getcwd(), 'output', 'characters')
     os.makedirs(output_dir, exist_ok=True)
+    print(f"DEBUG: Saving image to {output_dir}")   
     
     filename = f"{sheet_data.get('name', 'asset')}.png"
     output_filename = os.path.join(output_dir, filename)
-    
-    images[0].save(location=output_filename)
-    
+    print(f"DEBUG: Output filename: {output_filename}") 
+    images[0].save(location=output_filename, include_generation_parameters=False)
+    print(f"DEBUG: Saved image to {output_filename}")   
     return output_filename

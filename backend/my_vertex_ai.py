@@ -4,7 +4,7 @@ from vertexai.preview.vision_models import ImageGenerationModel
 
 # TODO(developer): Update and un-comment below lines
 PROJECT_ID = "move-37"
-output_file = "input-image.png"
+output_file = "output/characters/pinquin.png"
 prompt = "a drawing of a pinquin chasing a fox" # The text prompt describing what you want to see.
 
 vertexai.init(project=PROJECT_ID, location="us-central1")
