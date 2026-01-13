@@ -26,17 +26,23 @@ def test_parser():
             return
     else:
         # Fallback to local sample if no file provided
-        print("No file provided, using default sample data.")
-        sheet_data = {
-            "physical_traits": {
-                "hair": "messy brown",
-                "eyes": "green"
-            },
-            "style": {
-                "art_style": "Studio Ghibli watercolor"
-            },
-            "clothing": "worn adventurer's cloak and leather armor"
-        }
+        default_path = os.path.join(os.path.dirname(__file__), '..', 'character_sheets', 'kaelen.json')
+        if os.path.exists(default_path):
+            print(f"No file provided, using default: {default_path}")
+            with open(default_path, 'r') as f:
+                sheet_data = json.load(f)
+        else:
+            print("No file provided and default 'kaelen.json' not found. Using hardcoded sample.")
+            sheet_data = {
+                "physical_traits": {
+                    "hair": "messy brown",
+                    "eyes": "green"
+                },
+                "style": {
+                    "art_style": "Studio Ghibli watercolor"
+                },
+                "clothing": "worn adventurer's cloak and leather armor"
+            }
 
     print("Input Character Data:")
     print(sheet_data)

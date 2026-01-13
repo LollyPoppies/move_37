@@ -1,3 +1,4 @@
+print("DEBUG: SANITY CHECK - RUNNING test_vertex_local.py")
 import os
 from dotenv import load_dotenv
 from app.services.vertex_ai import generate_visual_from_sheet # Path to your logic
@@ -7,8 +8,8 @@ import json
 
 # 1. Load your .env settings
 load_dotenv()
-print(f"DEBUG: GCP_PROJECT_ID={os.getenv('GCP_PROJECT_ID')}")
-print(f"DEBUG: GCP_LOCATION={os.getenv('GCP_LOCATION')}")
+# 1. Load your .env settings
+load_dotenv()
 
 # 2. Load data from kaelen.json
 json_path = os.path.join(os.path.dirname(__file__), '..', 'character_sheets', 'kaelen.json')
@@ -36,7 +37,7 @@ print(f"Loaded CharacterSheet: {char_sheet}")
 # 4. Run the test
 print("Starting local Vertex AI test...")
 try:
-    result = generate_visual_from_sheet(char_sheet)
+    result = generate_visual_from_sheet(char_sheet.model_dump())
     print(f"Success! Image generated: {result}")
 except Exception as e:
     print(f"Test Failed: {e}")
