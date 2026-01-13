@@ -16,10 +16,21 @@ with open(json_path, 'r') as f:
 print(f"Loaded JSON data for: {raw_data.get('name')}")
 
 # 3. Run the test with raw dict
-print("Starting local Vertex AI test...")
 try:
     # Pass the raw dictionary directly to the service
-    result = generate_visual_from_sheet(raw_data)
-    print(f"Success! Image generated: {result}")
+    images = generate_visual_from_sheet(raw_data)
+    
+    # Save the images
+    output_dir = os.path.join(os.getcwd(), 'output', 'characters')
+    os.makedirs(output_dir, exist_ok=True)
+    
+    base_filename = raw_data.get('name', 'asset')
+    
+    for i, image in enumerate(images):
+        filename = f"{base_filename}_{i+1}.png"
+        output_filename = os.path.join(output_dir, filename)
+        image.save(location=output_filename, include_generation_parameters=False)
+        print(f"Success! Image generated and saved to: {output_filename}")
+
 except Exception as e:
     print(f"Test Failed: {e}")

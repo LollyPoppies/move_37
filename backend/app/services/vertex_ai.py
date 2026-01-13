@@ -10,7 +10,7 @@ PROJECT_ID = os.getenv("GCP_PROJECT_ID", "move-37")
 LOCATION = os.getenv("GCP_LOCATION", "us-central1")
 vertexai.init(project=PROJECT_ID, location=LOCATION)
 
-def generate_visual_from_sheet(sheet_data: dict, sheet_type: str = "character"):
+def generate_visual_from_sheet(sheet_data: dict, sheet_type: str = "character", number_of_images: int = 4):
     
     # 1. Generate Prompt
     print("DEBUG: Starting Prompt Generation...")
@@ -22,7 +22,7 @@ def generate_visual_from_sheet(sheet_data: dict, sheet_type: str = "character"):
     imagen_model = ImageGenerationModel.from_pretrained("imagen-3.0-generate-002")
     images = imagen_model.generate_images(
         prompt=refined_prompt,
-        number_of_images=1,
+        number_of_images=number_of_images,
         aspect_ratio="16:9",
         # You can't use a seed value and watermark at the same time.
         add_watermark=False,
@@ -32,14 +32,5 @@ def generate_visual_from_sheet(sheet_data: dict, sheet_type: str = "character"):
     )
     print(f"Created output image using {len(images[0]._image_bytes)} bytes")
 
-    # 3. Save Image
-    output_dir = os.path.join(os.getcwd(), 'output', 'characters')
-    os.makedirs(output_dir, exist_ok=True)
-    print(f"DEBUG: Saving image to {output_dir}")   
-    
-    filename = f"{sheet_data.get('name', 'asset')}.png"
-    output_filename = os.path.join(output_dir, filename)
-    print(f"DEBUG: Output filename: {output_filename}") 
-    images[0].save(location=output_filename, include_generation_parameters=False)
-    print(f"DEBUG: Saved image to {output_filename}")   
-    return output_filename
+    # Return the list of image objects directly
+    return images.images
