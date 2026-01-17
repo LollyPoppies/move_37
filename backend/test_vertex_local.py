@@ -8,7 +8,7 @@ load_dotenv()
 
 # 2. Load data from kaelen.json
 # Note: User's original request mentioned 'kaelon.json' but file is 'kaelen.json'
-json_path = os.path.join(os.path.dirname(__file__), '..', 'character_sheets', 'kaelen.json')
+json_path = os.path.join(os.path.dirname(__file__), '..', 'data', 'character_sheets', 'kaelen.json')
 
 with open(json_path, 'r') as f:
     raw_data = json.load(f)

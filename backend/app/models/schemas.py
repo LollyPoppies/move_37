@@ -2,13 +2,11 @@ from pydantic import BaseModel
 from typing import List, Optional
 
 class CharacterSheet(BaseModel):
+    character_id: Optional[str] = None
     name: str
-    age_range: str
-    hair_details: str
-    eye_color: str
-    clothing_description: str
-    art_style: str = "Cinematic Anime"
-    physical_traits: List[str] = []
+    physical_traits: dict
+    style_id: Optional[str] = None
+    clothing: str
 
 class EnvironmentSheet(BaseModel):
     location_name: str

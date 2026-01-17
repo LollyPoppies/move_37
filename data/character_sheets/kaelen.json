@@ -1,0 +1,12 @@
+{
+    "character_id": "c_001",
+    "name": "Kaelen",
+    "physical_traits": {
+        "age_range": "Late 20s",
+        "hair": "Electric blue, undercut, messy",
+        "eyes": "Cybernetic silver",
+        "physique": "Lean, athletic"
+    },
+    "style_id": "cyberpunk_v1",
+    "clothing": "Distressed dark denim jacket over a white tech-wear hoodie"
+}

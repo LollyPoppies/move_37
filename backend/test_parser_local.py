@@ -26,7 +26,7 @@ def test_parser():
             return
     else:
         # Fallback to local sample if no file provided
-        default_path = os.path.join(os.path.dirname(__file__), '..', 'character_sheets', 'kaelen.json')
+        default_path = os.path.join(os.path.dirname(__file__), '..', 'data', 'character_sheets', 'kaelen.json')
         if os.path.exists(default_path):
             print(f"No file provided, using default: {default_path}")
             with open(default_path, 'r') as f:

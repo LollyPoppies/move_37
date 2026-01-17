@@ -1,0 +1,14 @@
+{
+    "style_id": "cyberpunk_v1",
+    "art_style": "High-fidelity Seinen Anime",
+    "lighting": "Neon rim-lighting, high-contrast",
+    "color_palette": [
+        "#00BFFF",
+        "#FF00FF"
+    ],
+    "camera_language": {
+        "lens": "35mm anamorphic",
+        "movement": "Slow dolly-in",
+        "grain": "Film stock 500T"
+    }
+}
