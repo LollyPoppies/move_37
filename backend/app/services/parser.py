@@ -89,3 +89,33 @@ def create_prompt_from_sheet(sheet_json: dict):
         "style_id": sheet_json.get('style_id')
     }
     return parse_scene(scene_mock)
+def create_character_reference_prompts(character_data: dict):
+    """
+    Generates 3 specialized prompts for Veo character references:
+    1. Hero Shot (Frontal)
+    2. 3/4 Profile
+    3. Full Back
+    """
+    name = character_data.get('name', 'Unknown')
+    traits = character_data.get('physical_traits', {})
+    hair = traits.get('hair', '')
+    eyes = traits.get('eyes', '')
+    clothing = character_data.get('clothing', '')
+    
+    # Get style info if possible
+    style_id = character_data.get('style_id')
+    style_data = load_json_data("styles", style_id)
+    art_style = style_data.get('art_style', 'Cinematic')
+    
+    base_description = f"{name}"
+    if hair or eyes or clothing:
+        details = ", ".join(filter(None, [hair, eyes, clothing]))
+        base_description += f" ({details})"
+    
+    prompts = {
+        "front": f"The 'Hero' Shot (Frontal). Clear, eye-level view of the face and upper body of {base_description}. This defines the primary identity. {art_style} style, high detail.",
+        "side": f"The 3/4 Profile of {base_description}. Crucial for movement, showing the bridge of the nose, jawline, and how hair sits on the side of the head. {art_style} style, high detail.",
+        "back": f"Full Back view of {base_description}. Defines the silhouette and clothing details. {art_style} style, high detail."
+    }
+    
+    return prompts
