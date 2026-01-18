@@ -1,0 +1,13 @@
+{
+    "sequence_id": "opening_crawl",
+    "scenes": [
+        {
+            "scene_id": "001",
+            "cinematography": "medium_shot",
+            "character_id": "kaelen",
+            "action": "Walking through a crowded market, looking over shoulder",
+            "environment_id": "Neon_Alleway",
+            "style_id": "cyberpunk_v1"
+        }
+    ]
+}

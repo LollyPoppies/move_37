@@ -1,0 +1,7 @@
+{
+    "medium_shot": "Medium shot, eye-level, focused on subject",
+    "wide_shot": "Wide shot, environmental perspective, showing scale",
+    "close_up": "Close-up shot, detailed focus on subject's features",
+    "low_angle": "Low angle shot, subject appearing heroic and powerful",
+    "high_angle": "High angle shot, subject appearing vulnerable or small"
+}

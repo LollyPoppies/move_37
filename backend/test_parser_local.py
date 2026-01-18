@@ -26,36 +26,37 @@ def test_parser():
             return
     else:
         # Fallback to local sample if no file provided
-        default_path = os.path.join(os.path.dirname(__file__), '..', 'data', 'character_sheets', 'kaelen.json')
+        default_path = os.path.join(os.path.dirname(__file__), '..', 'data', 'sequences', 'opening_crawl.json')
         if os.path.exists(default_path):
-            print(f"No file provided, using default: {default_path}")
+            print(f"No file provided, using default sequence: {default_path}")
             with open(default_path, 'r') as f:
                 sheet_data = json.load(f)
         else:
-            print("No file provided and default 'kaelen.json' not found. Using hardcoded sample.")
+            print("No file provided and default 'opening_crawl.json' not found. Using hardcoded sample.")
             sheet_data = {
-                "physical_traits": {
-                    "hair": "messy brown",
-                    "eyes": "green"
-                },
-                "style": {
-                    "art_style": "Studio Ghibli watercolor"
-                },
-                "clothing": "worn adventurer's cloak and leather armor"
+                "scenes": [
+                  {
+                    "character_id": "kaelen",
+                    "action": "Posing dramatically",
+                    "environment_id": "Neon_Alleway"
+                  }
+                ]
             }
 
-    print("Input Character Data:")
-    print(sheet_data)
-    print("\nGenerating Prompt...")
+    print("Input Data:")
+    print(json.dumps(sheet_data, indent=2))
+    print("\nGenerating Prompt(s)...")
 
     try:
         result = create_prompt_from_sheet(sheet_data)
-        print("\n--- Output Prompt ---")
+        print("\n--- Output Prompt(s) ---")
         print(result)
         print("---------------------")
     except KeyError as e:
         print(f"Error: Missing key in input data: {e}")
     except Exception as e:
+        import traceback
+        traceback.print_exc()
         print(f"An unexpected error occurred: {e}")
 
 if __name__ == "__main__":
