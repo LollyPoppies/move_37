@@ -29,7 +29,7 @@ def parse_scene(scene_data: dict):
 
     # 2. Subject (Character)
     character_id = scene_data.get('character_id')
-    character_data = load_json_data("character_sheets", character_id)
+    character_data = load_json_data("characters", character_id)
     subject_name = character_data.get('name', character_id or 'Unknown Character')
     traits = character_data.get('physical_traits', {})
     hair = traits.get('hair', '')

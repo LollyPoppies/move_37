@@ -36,12 +36,12 @@ The backend is structured as a Python package.
 
 Contains the source of truth for the creative assets.
 
-- **`character_sheets/`**: JSON files defining characters (e.g., *kaelen.json*).
+- **`characters/`**: JSON files defining characters (e.g., *kaelen.json*).
 - **`environment_sheets/`**: JSON files defining settings/locations.
 
 ## Data Flow
 
-1. **Input**: A JSON file in `data/character_sheets` defines a character's traits (hair, eyes, outfit, style).
+1. **Input**: A JSON file in `data/characters` defines a character's traits (hair, eyes, outfit, style).
 2. **Parsing**: The `/batch-render` endpoint triggers the process. `services.parser` reads the JSON and constructs a detailed text prompt.
 3. **Generation**: `services.vertex_ai` receives the prompt and calls Google's Imagen model via Vertex AI.
 4. **Output**: The generated images are returned (and potentially saved/served).

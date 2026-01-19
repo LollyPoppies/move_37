@@ -8,5 +8,10 @@
         "physique": "Lean, athletic"
     },
     "style_id": "cyberpunk_v1",
-    "clothing": "Distressed dark denim jacket over a white tech-wear hoodie"
+    "clothing": "Distressed dark denim jacket over a white tech-wear hoodie",
+    "reference_images": {
+        "front": "kaelen_refs/front.jpg",
+        "side": "kaelen_refs/side.jpg",
+        "back": "kaelen_refs/back.jpg"
+    }
 }

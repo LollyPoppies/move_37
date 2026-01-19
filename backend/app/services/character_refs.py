@@ -22,36 +22,40 @@ def generate_character_references(character_id: str, data_dir: str = "data/chara
     ref_folder = os.path.join(data_dir, f"{character_id}_refs")
     os.makedirs(ref_folder, exist_ok=True)
     
-    # 4. Generate and Save Images
+    import time
     image_references = {}
     for ref_type, prompt in prompts.items():
-        print(f"Generating {ref_type} reference...")
-        # We reuse generate_visual_from_sheet but with a custom prompt if needed
-        # Or better, we call vertex AI directly for more control
-        # For simplicity, let's assume we want 1 image per reference
+        img_filename = f"{ref_type}.jpg"
+        img_path = os.path.join(ref_folder, img_filename)
         
-        # We need a slightly different vertex_ai call that takes a raw prompt
-        # Let's adjust vertex_ai.py or call it appropriately
-        # Actually, let's just use the ImageGenerationModel directly here to avoid confusion
+        # Check if already exists to save quota
+        if os.path.exists(img_path):
+            print(f"Skipping {ref_type} reference (already exists at {img_path})")
+            image_references[ref_type] = f"{character_id}_refs/{img_filename}"
+            continue
+
+        print(f"\nGenerating {ref_type} reference...")
+        print(f"DEBUG: Character Reference Prompt: {prompt}")
+        
         from vertexai.preview.vision_models import ImageGenerationModel
-        
         model = ImageGenerationModel.from_pretrained("imagen-3.0-generate-002")
+        
         images = model.generate_images(
             prompt=prompt,
             number_of_images=1,
-            aspect_ratio="1:1",  # Reference images are often square or 3:4
+            aspect_ratio="1:1",
             add_watermark=False,
             safety_filter_level="block_only_high",
             person_generation="allow_all",
         )
         
-        # Save image
-        img_filename = f"{ref_type}.jpg"
-        img_path = os.path.join(ref_folder, img_filename)
         images[0].save(img_path)
-        
         image_references[ref_type] = f"{character_id}_refs/{img_filename}"
         print(f"Saved {ref_type} reference to {img_path}")
+        
+        # Small delay to avoid 429 Quota Exceeded
+        print("Waiting 5 seconds for quota reset...")
+        time.sleep(5)
 
     # 5. Update JSON
     character_data["reference_images"] = image_references
