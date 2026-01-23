@@ -15,7 +15,10 @@ def generate_visual_from_sheet(sheet_data: dict, sheet_type: str = "character", 
     # 1. Generate Prompt
     print("DEBUG: Starting Prompt Generation...")
     refined_prompt = create_prompt_from_sheet(sheet_data)
+    negative_prompt = sheet_data.get("negative_prompt")
     print(f"DEBUG: Refined Prompt: {refined_prompt[:50]}...")
+    if negative_prompt:
+        print(f"DEBUG: Negative Prompt: {negative_prompt}")
 
     # 2. Generate Image
     print("DEBUG: Starting Image Generation...")
@@ -29,6 +32,7 @@ def generate_visual_from_sheet(sheet_data: dict, sheet_type: str = "character", 
         # seed=100,
         safety_filter_level="block_only_high",
         person_generation="allow_all",
+        negative_prompt=negative_prompt,
     )
     print(f"Created output image using {len(images[0]._image_bytes)} bytes")
 

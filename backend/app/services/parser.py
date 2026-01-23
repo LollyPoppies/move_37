@@ -29,7 +29,7 @@ def parse_scene(scene_data: dict):
 
     # 2. Subject (Character)
     character_id = scene_data.get('character_id')
-    character_data = load_json_data("character_sheets", character_id)
+    character_data = load_json_data("characters", character_id)
     subject_name = character_data.get('name', character_id or 'Unknown Character')
     traits = character_data.get('physical_traits', {})
     hair = traits.get('hair', '')
@@ -37,7 +37,7 @@ def parse_scene(scene_data: dict):
     clothing = character_data.get('clothing', '')
     subject = f"{subject_name}"
     if hair or eyes or clothing:
-        details = ", ".join(filter(None, [hair, eyes, clothing]))
+        details = ", ".join(filter(None, [hair, eyes, clothing, character_data.get('extra_details', '')]))
         subject += f" ({details})"
 
     # 3. Action
@@ -45,7 +45,7 @@ def parse_scene(scene_data: dict):
 
     # 4. Context (Environment)
     env_id = scene_data.get('environment_id')
-    env_data = load_json_data("environment_sheets", env_id)
+    env_data = load_json_data("environments", env_id)
     location = env_data.get('location', 'unspecified location')
     weather = env_data.get('weather', '')
     context = f"in {location}"
@@ -89,3 +89,63 @@ def create_prompt_from_sheet(sheet_json: dict):
         "style_id": sheet_json.get('style_id')
     }
     return parse_scene(scene_mock)
+def create_character_reference_prompts(character_data: dict):
+    """
+    Generates 3 specialized prompts for Veo character references:
+    1. Hero Shot (Frontal)
+    2. 3/4 Profile
+    3. Full Back
+    """
+    name = character_data.get('name', 'Unknown')
+    traits = character_data.get('physical_traits', {})
+    hair = traits.get('hair', '')
+    eyes = traits.get('eyes', '')
+    clothing = character_data.get('clothing', '')
+    
+    # Get style info if possible
+    style_id = character_data.get('style_id')
+    style_data = load_json_data("styles", style_id)
+    art_style = style_data.get('art_style', 'Cinematic')
+    
+    base_description = f"{name}"
+    if hair or eyes or clothing:
+        details = ", ".join(filter(None, [hair, eyes, clothing]))
+        base_description += f" ({details})"
+    
+    prompts = {
+        "front": f"The 'Hero' Shot (Frontal). Clear, eye-level view of the face and upper body of {base_description}. This defines the primary identity. {art_style} style, high detail.",
+        "side": f"The 3/4 Profile of {base_description}. Crucial for movement, showing the bridge of the nose, jawline, and how hair sits on the side of the head. {art_style} style, high detail.",
+        "back": f"Full Back view of {base_description}. Defines the silhouette and clothing details. {art_style} style, high detail."
+    }
+    
+    return prompts
+
+def create_environment_reference_prompts(environment_data: dict):
+    """
+    Generates 3 specialized prompts for environment references:
+    1. Establishing Shot (Wide)
+    2. Detail Shot (Texture/Props)
+    3. Lighting Reference
+    """
+    location = environment_data.get('location', 'Unspecified Location')
+    lighting = environment_data.get('lighting', '')
+    weather = environment_data.get('weather', '')
+    mood = environment_data.get('mood', '')
+    
+    # Get style info if possible
+    style_id = environment_data.get('style_id')
+    style_data = load_json_data("styles", style_id)
+    art_style = style_data.get('art_style', 'Cinematic')
+    
+    base_description = f"{location}"
+    if weather or mood:
+        details = ", ".join(filter(None, [weather, mood]))
+        base_description += f" ({details})"
+    
+    prompts = {
+        "wide": f"An establishing wide shot of {base_description}. This shot defines the scale and layout of the environment. {lighting} lighting, {art_style} style, high detail.",
+        "detail": f"A close-up detail shot within {base_description}, focusing on textures, materials, and small environmental props. {lighting} lighting, {art_style} style, extreme detail.",
+        "lighting": f"A specialized lighting reference for {base_description}. Focuses on how light interacts with surfaces, shadows, and the overall color palette. {lighting}, {art_style} style, hyper-realistic."
+    }
+    
+    return prompts

@@ -10,7 +10,7 @@ async def batch_render():
     """Reads all local JSONs and generates images in bulk."""
     results = []
     # Process Characters
-    char_path = "../../character_sheets/"
+    char_path = "../../data/characters/"
     for file in os.listdir(char_path):
         if file.endswith(".json"):
             with open(os.path.join(char_path, file), "r") as f:

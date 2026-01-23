@@ -1,0 +1,13 @@
+{
+    "env_id": "e_001",
+    "location": "Neon Alleyway",
+    "lighting": "Cinematic low-light, pink and blue neon backlight",
+    "time_of_day": "Midnight",
+    "weather": "Heavy rain, wet reflective surfaces",
+    "mood": "Gritty, Cyberpunk",
+    "reference_images": {
+        "wide": "Neon_Alleway_refs/wide.jpg",
+        "detail": "Neon_Alleway_refs/detail.jpg",
+        "lighting": "Neon_Alleway_refs/lighting.jpg"
+    }
+}

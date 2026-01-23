@@ -8,7 +8,7 @@ load_dotenv()
 
 # 2. Load data from kaelen.json
 # Note: User's original request mentioned 'kaelon.json' but file is 'kaelen.json'
-json_path = os.path.join(os.path.dirname(__file__), '..', 'data', 'character_sheets', 'kaelen.json')
+json_path = os.path.join(os.path.dirname(__file__), '..', 'data', 'characters', 'kaelen.json')
 
 with open(json_path, 'r') as f:
     raw_data = json.load(f)
@@ -21,7 +21,7 @@ try:
     images = generate_visual_from_sheet(raw_data)
     
     # Save the images
-    output_dir = os.path.join(os.getcwd(), 'output', 'characters')
+    output_dir = os.path.join(os.getcwd(), 'renders', 'characters')
     os.makedirs(output_dir, exist_ok=True)
     
     base_filename = raw_data.get('name', 'asset')
