@@ -4,5 +4,10 @@
     "lighting": "Cinematic low-light, pink and blue neon backlight",
     "time_of_day": "Midnight",
     "weather": "Heavy rain, wet reflective surfaces",
-    "mood": "Gritty, Cyberpunk"
+    "mood": "Gritty, Cyberpunk",
+    "reference_images": {
+        "wide": "Neon_Alleway_refs/wide.jpg",
+        "detail": "Neon_Alleway_refs/detail.jpg",
+        "lighting": "Neon_Alleway_refs/lighting.jpg"
+    }
 }
