@@ -47,6 +47,7 @@ def generate_character_references(character_id: str, data_dir: str = "data/chara
             add_watermark=False,
             safety_filter_level="block_only_high",
             person_generation="allow_all",
+            negative_prompt=character_data.get("negative_prompt"),
         )
         
         images[0].save(img_path)

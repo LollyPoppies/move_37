@@ -9,6 +9,8 @@
     },
     "style_id": "cyberpunk_v1",
     "clothing": "Distressed dark denim jacket over a white tech-wear hoodie",
+    "extra_details": "neon glowing tattoos on forearms",
+    "negative_prompt": "glasses, spectacles, eyewear, sunglasses",
     "reference_images": {
         "front": "kaelen_refs/front.jpg",
         "side": "kaelen_refs/side.jpg",

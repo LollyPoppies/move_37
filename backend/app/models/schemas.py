@@ -7,6 +7,7 @@ class CharacterSheet(BaseModel):
     physical_traits: dict
     style_id: Optional[str] = None
     clothing: str
+    negative_prompt: Optional[str] = None
 
 class EnvironmentSheet(BaseModel):
     location_name: str

@@ -4,7 +4,7 @@ This document provides a high-level overview of the **Move 37** project structur
 
 ## Overview
 
-Move 37 is a creative project that uses Vertex AI to generate visuals based on structured JSON data definitions (Character Sheets and Environment Sheets). The backend uses FastAPI to expose endpoints for batch rendering.
+Move 37 is a creative project that uses Vertex AI to generate visuals based on structured JSON data definitions (Character Sheets and Environments). The backend uses FastAPI to expose endpoints for batch rendering.
 
 ## Directory Layout
 
@@ -37,7 +37,7 @@ The backend is structured as a Python package.
 Contains the source of truth for the creative assets.
 
 - **`characters/`**: JSON files defining characters (e.g., *kaelen.json*).
-- **`environment_sheets/`**: JSON files defining settings/locations.
+- **`environments/`**: JSON files defining settings/locations.
 
 ## Data Flow
 
