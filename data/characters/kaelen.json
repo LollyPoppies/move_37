@@ -12,8 +12,18 @@
     "extra_details": "neon glowing tattoos on forearms",
     "negative_prompt": "glasses, spectacles, eyewear, sunglasses",
     "reference_images": {
-        "front": "kaelen_refs/front.jpg",
-        "side": "kaelen_refs/side.jpg",
-        "back": "kaelen_refs/back.jpg"
+        "cyberpunk_v1": {
+            "front": "kaelen_refs/front.jpg",
+            "side": "kaelen_refs/side.jpg",
+            "back": "kaelen_refs/back.jpg"
+        },
+        "noir": {
+            "head": [
+                "kaelen_refs/noir/head_1.jpg",
+                "kaelen_refs/noir/head_2.jpg",
+                "kaelen_refs/noir/head_3.jpg",
+                "kaelen_refs/noir/head_4.jpg"
+            ]
+        }
     }
 }

@@ -1,0 +1,16 @@
+{
+    "style_id": "hyper_real",
+    "art_style": "Photorealistic cinematic realism, extreme detail",
+    "lighting": "Physically based rendering, natural global illumination, ray-traced accuracy",
+    "color_palette": [
+        "#1A1A1A",
+        "#F0F0F0",
+        "#BEBEBE",
+        "#8E8E8E"
+    ],
+    "camera_language": {
+        "lens": "Arri Alexa, 85mm Prime, shallow depth of field",
+        "movement": "Steadicam, fluid and precise",
+        "grain": "Pristine digital sensor, no grain"
+    }
+}

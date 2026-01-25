@@ -1,0 +1,16 @@
+{
+    "style_id": "noir",
+    "art_style": "Classic Film Noir, hard-boiled aesthetic",
+    "lighting": "High-contrast Chiaroscuro, dramatic slatted shadows (Venetian blinds), single light source",
+    "color_palette": [
+        "#000000",
+        "#FFFFFF",
+        "#404040",
+        "#808080"
+    ],
+    "camera_language": {
+        "lens": "35mm black and white film stock",
+        "movement": "Static or slow meaningful pans",
+        "grain": "Heavy Tri-X film grain"
+    }
+}

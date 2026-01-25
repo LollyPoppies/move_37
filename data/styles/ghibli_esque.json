@@ -1,0 +1,17 @@
+{
+    "style_id": "ghibli_esque",
+    "art_style": "Studio Ghibli inspired traditional hand-painted animation",
+    "lighting": "Soft, diffused natural daylight, painterly highlights",
+    "color_palette": [
+        "#4A7C59",
+        "#8FB339",
+        "#F7F7F2",
+        "#D4A373",
+        "#6096BA"
+    ],
+    "camera_language": {
+        "lens": "Virtual 50mm, soft edge focus",
+        "movement": "Gentle, lyrical camera drift",
+        "grain": "Subtle paper texture overlay"
+    }
+}
