@@ -6,6 +6,9 @@ uvicorn[standard]==0.32.1
 google-cloud-aiplatform==1.75.0
 google-auth==2.36.0
 
+# Image Processing
+Pillow==11.1.0
+
 # Data Validation & Utilities
 pydantic==2.10.3
 python-dotenv==1.0.1

@@ -89,7 +89,7 @@ def create_prompt_from_sheet(sheet_json: dict):
         "style_id": sheet_json.get('style_id')
     }
     return parse_scene(scene_mock)
-def create_character_reference_prompts(character_data: dict):
+def create_character_reference_prompts(character_data: dict, style_id: str = None):
     """
     Generates 3 specialized prompts for Veo character references:
     1. Hero Shot (Frontal)
@@ -103,7 +103,7 @@ def create_character_reference_prompts(character_data: dict):
     clothing = character_data.get('clothing', '')
     
     # Get style info if possible
-    style_id = character_data.get('style_id')
+    style_id = style_id or character_data.get('style_id')
     style_data = load_json_data("styles", style_id)
     art_style = style_data.get('art_style', 'Cinematic')
     
@@ -113,14 +113,15 @@ def create_character_reference_prompts(character_data: dict):
         base_description += f" ({details})"
     
     prompts = {
-        "front": f"The 'Hero' Shot (Frontal). Clear, eye-level view of the face and upper body of {base_description}. This defines the primary identity. {art_style} style, high detail.",
+        "head": f"Tight close-up 'Head' shot of {base_description}. A focused view of the face and head, showing clear details of the eyes, hair, and facial features. {art_style} style, extreme detail.",
+        "full_body": f"The 'Hero' Shot (Full-body). Clear, eye-level view of the entire body of {base_description} from head to toe, including legs and footwear. This defines the primary identity and full silhouette. {art_style} style, high detail.",
         "side": f"The 3/4 Profile of {base_description}. Crucial for movement, showing the bridge of the nose, jawline, and how hair sits on the side of the head. {art_style} style, high detail.",
         "back": f"Full Back view of {base_description}. Defines the silhouette and clothing details. {art_style} style, high detail."
     }
     
     return prompts
 
-def create_environment_reference_prompts(environment_data: dict):
+def create_environment_reference_prompts(environment_data: dict, style_id: str = None):
     """
     Generates 3 specialized prompts for environment references:
     1. Establishing Shot (Wide)
@@ -133,7 +134,7 @@ def create_environment_reference_prompts(environment_data: dict):
     mood = environment_data.get('mood', '')
     
     # Get style info if possible
-    style_id = environment_data.get('style_id')
+    style_id = style_id or environment_data.get('style_id')
     style_data = load_json_data("styles", style_id)
     art_style = style_data.get('art_style', 'Cinematic')
     

@@ -3,9 +3,33 @@
     "scenes": [
         {
             "scene_id": "001",
-            "cinematography": "medium_shot",
+            "cinematography": "wide_shot",
             "character_id": "kaelen",
-            "action": "Walking through a crowded market, looking over shoulder",
+            "action": "[00:00-00:02] Wide shot of Kaelen, their electric blue undercut damp from the heavy rain, as they step into the mouth of the Neon Alleyway, boots splashing in a shallow digital puddle.",
+            "environment_id": "Neon_Alleway",
+            "style_id": "cyberpunk_v1"
+        },
+        {
+            "scene_id": "002",
+            "cinematography": "close_up",
+            "character_id": "kaelen",
+            "action": "[00:02-00:04] Close-up profile of Kaelen's face, cybernetic silver eyes narrow as they scan a flickering holographic advertisement, neon pink light reflecting off their wet skin.",
+            "environment_id": "Neon_Alleway",
+            "style_id": "cyberpunk_v1"
+        },
+        {
+            "scene_id": "003",
+            "cinematography": "tracking_shot",
+            "character_id": "kaelen",
+            "action": "[00:04-00:06] Low-angle tracking shot following Kaelen's arm; the neon glowing tattoos on their forearms pulse with a soft cyan light as they pull up their hoodie's collar.",
+            "environment_id": "Neon_Alleway",
+            "style_id": "cyberpunk_v1"
+        },
+        {
+            "scene_id": "004",
+            "cinematography": "high_angle",
+            "character_id": "kaelen",
+            "action": "[00:06-00:08] Wide, high-angle crane shot showing Kaelen standing alone beneath a massive, buzzing neon billboard that casts long, distorted shadows across the wet pavement.",
             "environment_id": "Neon_Alleway",
             "style_id": "cyberpunk_v1"
         }

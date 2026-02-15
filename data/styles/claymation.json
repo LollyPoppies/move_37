@@ -1,0 +1,16 @@
+{
+    "style_id": "claymation",
+    "art_style": "Hand-crafted Stop Motion Clay (Aardman style)",
+    "lighting": "Miniature studio lighting, slight incandescent flicker",
+    "color_palette": [
+        "#E07A5F",
+        "#3D405B",
+        "#81B29A",
+        "#F2CC8F"
+    ],
+    "camera_language": {
+        "lens": "Macro 60mm, tactile depth of field",
+        "movement": "Staccato stop-motion movement",
+        "grain": "Fingerprint textures and fine clay debris"
+    }
+}
