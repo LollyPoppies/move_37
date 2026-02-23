@@ -13,10 +13,12 @@ import glob
 try:
     from app.services.character_refs import generate_character_references
     from app.services.environment_refs import generate_environment_references
+    from app.services.llm import generate_character_json
 except ImportError:
     # Fallback for running directly or differently
     from services.character_refs import generate_character_references
     from services.environment_refs import generate_environment_references
+    from services.llm import generate_character_json
 
 app = FastAPI()
 
@@ -60,6 +62,9 @@ class GenerateRequest(BaseModel):
     id: str # Filename without extension or full ID
     style_id: Optional[str] = None
     force: bool = False
+
+class PromptRequest(BaseModel):
+    prompt: str
 
 class FileSaveRequest(BaseModel):
     content: str # content as string (JSON/YAML)
@@ -112,6 +117,17 @@ def generate_environment(request: GenerateRequest):
             data_dir=os.path.join(DATA_DIR, "environments")
         )
         return {"status": "success", "images": result}
+    except Exception as e:
+        import traceback
+        traceback.print_exc()
+        raise HTTPException(status_code=500, detail=str(e))
+
+@app.post("/generate/character-json")
+def generate_character_json_endpoint(request: PromptRequest):
+    """Generate a character sheet JSON from a text prompt."""
+    try:
+        result = generate_character_json(request.prompt)
+        return result
     except Exception as e:
         import traceback
         traceback.print_exc()

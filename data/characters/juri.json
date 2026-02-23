@@ -1,0 +1,34 @@
+{
+    "character_id": "c_002",
+    "name": "Juri",
+    "physical_traits": {
+        "age_range": "Teenager/Young Adult",
+        "hair": "Pink, spiky, short",
+        "eyes": "Light brown",
+        "physique": "Athletic and muscular"
+    },
+    "style_id": "shonen_v1",
+    "clothing": "Dark navy blue martial arts school uniform with a prominent red hoodie collar and red sneakers",
+    "extra_details": "Combat-ready stance, intense but kind expression, trademark pink spiky hair",
+    "negative_prompt": "glasses, spectacles, eyewear, sunglasses, facial hair, low quality, generic",
+    "reference_images": {
+        "shonen_v1": {
+            "head": "juri_refs/shonen_v1/head.jpg",
+            "full_body": "juri_refs/shonen_v1/full_body.jpg",
+            "side": "juri_refs/shonen_v1/side.jpg",
+            "back": "juri_refs/shonen_v1/back.jpg"
+        },
+        "cyberpunk_v1": {
+            "head": "juri_refs/cyberpunk_v1/head.jpg",
+            "full_body": "juri_refs/cyberpunk_v1/full_body.jpg",
+            "side": "juri_refs/cyberpunk_v1/side.jpg",
+            "back": "juri_refs/cyberpunk_v1/back.jpg"
+        },
+        "claymation": {
+            "head": "juri_refs/claymation/head.jpg",
+            "full_body": "juri_refs/claymation/full_body.jpg",
+            "side": "juri_refs/claymation/side.jpg",
+            "back": "juri_refs/claymation/back.jpg"
+        }
+    }
+}
